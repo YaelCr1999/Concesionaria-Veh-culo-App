@@ -26,13 +26,13 @@ namespace Capa_Negocio
             conecObj.AgregarVehiculo(objVehiculo);
         }
         //Metodo para poder actualizar  un vehiculo de la base de datos
-        public DataTable ModificarVehiculo(Vehiculo objVehiculo)
+        public int ModificarVehiculo(Vehiculo objVehiculo)
         {
             return conecObj.ModificarVehiculo(objVehiculo);
         }
 
         //Metodo para poder eliminar un vehiculo dela base de datos
-        public DataTable EliminarDato(Vehiculo vehiculoObj)
+        public int EliminarDato(Vehiculo vehiculoObj)
         {
             return conecObj.ElimarVehiculo(vehiculoObj);
         }
