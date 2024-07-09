@@ -23,11 +23,7 @@ namespace Capa_Negocio
         //Metodo para poder agregar un nuevo vehiculo a la base de datos
         public void AgregarVehiculo(Vehiculo objVehiculo)
         {
-<<<<<<< HEAD
-             conecObj.AgregarVehiculo(objVehiculo);
-=======
             conecObj.AgregarVehiculo(objVehiculo);
->>>>>>> RamaAgregar
         }
         //Metodo para poder actualizar  un vehiculo de la base de datos
         public int ModificarVehiculo(Vehiculo objVehiculo)

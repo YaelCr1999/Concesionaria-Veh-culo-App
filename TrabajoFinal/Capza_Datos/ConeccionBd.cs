@@ -63,17 +63,16 @@ namespace Capza_Datos
         }
 
         //Metodo para eliminar un vehiculo de la base de datos
-        public DataTable ElimarVehiculo(Vehiculo vehiculo)
+        public int ElimarVehiculo(Vehiculo vehiculo)
         {
             coneccion.Open();
-            string consultaEliminar = "DELETE FROM Vehiculo WHERE Id = @Id";
+            string consultaEliminar = "P_EliminarVehiculo";
             SqlCommand cmd = new SqlCommand(consultaEliminar, coneccion);
-            cmd.Parameters.AddWithValue("Id", vehiculo.Id);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable registroEliminado = new DataTable();
-            da.Fill(registroEliminado);
+            cmd.Parameters.AddWithValue("@Id", vehiculo.Id);
+            cmd.CommandType = CommandType.StoredProcedure;
+            int resul = cmd.ExecuteNonQuery();
             coneccion.Close();
-            return registroEliminado;
+            return resul; ;
         }
 
 
