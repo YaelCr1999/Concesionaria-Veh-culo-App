@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Configuration;
 using Capa_Entidad;
+using System;
 
 namespace Capza_Datos
 {
@@ -23,13 +24,13 @@ namespace Capza_Datos
         }
 
         //Metodo para agregar un nuevo vehiculo a la base de datos
-        public DataTable AgregarVehiculo(Vehiculo objVehiculo)
+        public void AgregarVehiculo(Vehiculo objVehiculo)
         {
             coneccion.Open();
-            string queryAgregar = "INSERT INTO Vehiculo VALUES (@Marca, @Modelo, @Color, @AÑo,@Matricula,@Placa, @Precio)";
+            string queryAgregar = "P_AgregarVehiculo";
 
             SqlCommand cmd = new SqlCommand(queryAgregar, coneccion);
-            //cmd.Parameters.AddWithValue("Id",objVehiculo.Id);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("Marca", objVehiculo.Marca);
             cmd.Parameters.AddWithValue("Modelo", objVehiculo.Modelo);
             cmd.Parameters.AddWithValue("Color", objVehiculo.Color);
@@ -37,11 +38,8 @@ namespace Capza_Datos
             cmd.Parameters.AddWithValue("Matricula", objVehiculo.Matricula);
             cmd.Parameters.AddWithValue("Placa", objVehiculo.Placa);
             cmd.Parameters.AddWithValue("Precio", objVehiculo.Precio);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable tablaVehiculo = new DataTable();
-            da.Fill(tablaVehiculo);
-            coneccion.Close();
-            return tablaVehiculo;
+            cmd.ExecuteNonQuery();
+           
 
         }
         //Metodo para modificar un vehiculo exixtente en la base de datos
