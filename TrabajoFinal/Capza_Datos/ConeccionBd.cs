@@ -13,8 +13,9 @@ namespace Capza_Datos
         public DataTable CargarVehiculos()
         {
             coneccion.Open();
-            string queryCargar = "SELECT * FROM Vehiculo";
+            string queryCargar = "P_cargarVehiculos";
             SqlCommand cmd = new SqlCommand(queryCargar, coneccion);
+            cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable tablaVehiculos = new DataTable();
             da.Fill(tablaVehiculos);
