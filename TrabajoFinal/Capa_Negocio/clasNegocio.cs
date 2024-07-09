@@ -21,18 +21,18 @@ namespace Capa_Negocio
         }
 
         //Metodo para poder agregar un nuevo vehiculo a la base de datos
-        public DataTable AgregarVehiculo(Vehiculo objVehiculo)
+        public void AgregarVehiculo(Vehiculo objVehiculo)
         {
-            return conecObj.AgregarVehiculo(objVehiculo);
+             conecObj.AgregarVehiculo(objVehiculo);
         }
         //Metodo para poder actualizar  un vehiculo de la base de datos
-        public DataTable ModificarVehiculo(Vehiculo objVehiculo)
+        public int ModificarVehiculo(Vehiculo objVehiculo)
         {
             return conecObj.ModificarVehiculo(objVehiculo);
         }
 
         //Metodo para poder eliminar un vehiculo dela base de datos
-        public DataTable EliminarDato(Vehiculo vehiculoObj)
+        public int EliminarDato(Vehiculo vehiculoObj)
         {
             return conecObj.ElimarVehiculo(vehiculoObj);
         }
