@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Configuration;
 using Capa_Entidad;
+using System;
 
 namespace Capza_Datos
 {
@@ -24,13 +25,13 @@ namespace Capza_Datos
         }
 
         //Metodo para agregar un nuevo vehiculo a la base de datos
-        public DataTable AgregarVehiculo(Vehiculo objVehiculo)
+        public void AgregarVehiculo(Vehiculo objVehiculo)
         {
             coneccion.Open();
-            string queryAgregar = "INSERT INTO Vehiculo VALUES (@Marca, @Modelo, @Color, @AÑo,@Matricula,@Placa, @Precio)";
+            string queryAgregar = "P_AgregarVehiculo";
 
             SqlCommand cmd = new SqlCommand(queryAgregar, coneccion);
-            //cmd.Parameters.AddWithValue("Id",objVehiculo.Id);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("Marca", objVehiculo.Marca);
             cmd.Parameters.AddWithValue("Modelo", objVehiculo.Modelo);
             cmd.Parameters.AddWithValue("Color", objVehiculo.Color);
@@ -38,20 +39,18 @@ namespace Capza_Datos
             cmd.Parameters.AddWithValue("Matricula", objVehiculo.Matricula);
             cmd.Parameters.AddWithValue("Placa", objVehiculo.Placa);
             cmd.Parameters.AddWithValue("Precio", objVehiculo.Precio);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable tablaVehiculo = new DataTable();
-            da.Fill(tablaVehiculo);
-            coneccion.Close();
-            return tablaVehiculo;
+            cmd.ExecuteNonQuery();
+           
 
         }
         //Metodo para modificar un vehiculo exixtente en la base de datos
-        public DataTable ModificarVehiculo(Vehiculo objVehi)
+        public int ModificarVehiculo(Vehiculo objVehi)
         {
             coneccion.Open();
-            string queryModi = "UPDATE Vehiculo SET Marca = @Marca, Modelo = @Modelo, Color = @Color, AÑo = @AÑo, Matricula = @Matricula, Placa = @Placa,  Precio = @Precio WHERE Id = @Id"; 
+            string queryModi = "P_actualizarVehiculos";
             SqlCommand cmd = new SqlCommand(queryModi,coneccion);
-            cmd.Parameters.AddWithValue("@Id", objVehi.Id);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.AddWithValue("@Id", objVehi.Id);
             cmd.Parameters.AddWithValue("@Marca", objVehi.Marca);
             cmd.Parameters.AddWithValue("@Modelo", objVehi.Modelo);
             cmd.Parameters.AddWithValue("@Color", objVehi.Color);
@@ -59,26 +58,20 @@ namespace Capza_Datos
             cmd.Parameters.AddWithValue("@Matricula", objVehi.Matricula);
             cmd.Parameters.AddWithValue("@Placa", objVehi.Placa);
             cmd.Parameters.AddWithValue("@Precio", objVehi.Precio);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable tablaVehiculo = new DataTable();
-            da.Fill(tablaVehiculo);
-            coneccion.Close();
-            return tablaVehiculo;
-
+            int numAfec = cmd.ExecuteNonQuery();
+            return numAfec;
         }
 
         //Metodo para eliminar un vehiculo de la base de datos
-        public DataTable ElimarVehiculo(Vehiculo vehiculo)
+        public int ElimarVehiculo(Vehiculo vehiculo)
         {
             coneccion.Open();
-            string consultaEliminar = "DELETE FROM Vehiculo WHERE Id = @Id";
+            string consultaEliminar = "P_EliminarVehiculo";
             SqlCommand cmd = new SqlCommand(consultaEliminar, coneccion);
-            cmd.Parameters.AddWithValue("Id", vehiculo.Id);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable registroEliminado = new DataTable();
-            da.Fill(registroEliminado);
+            cmd.CommandType = CommandType.StoredProcedure;
+            int numAfec = cmd.ExecuteNonQuery();
             coneccion.Close();
-            return registroEliminado;
+            return numAfec;
         }
 
 
