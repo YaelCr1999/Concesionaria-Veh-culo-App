@@ -72,7 +72,7 @@ namespace Capza_Datos
             cmd.CommandType = CommandType.StoredProcedure;
             int resul = cmd.ExecuteNonQuery();
             coneccion.Close();
-            return resul; ;
+            return resul; 
         }
 
 
