@@ -50,7 +50,9 @@ namespace Capza_Datos
             string queryModi = "P_actualizarVehiculos";
             SqlCommand cmd = new SqlCommand(queryModi,coneccion);
             cmd.CommandType = CommandType.StoredProcedure;
+
             cmd.Parameters.AddWithValue("@Id", objVehi.Id);
+
             cmd.Parameters.AddWithValue("@Marca", objVehi.Marca);
             cmd.Parameters.AddWithValue("@Modelo", objVehi.Modelo);
             cmd.Parameters.AddWithValue("@Color", objVehi.Color);
@@ -68,6 +70,7 @@ namespace Capza_Datos
             coneccion.Open();
             string consultaEliminar = "P_EliminarVehiculo";
             SqlCommand cmd = new SqlCommand(consultaEliminar, coneccion);
+
             cmd.Parameters.AddWithValue("@Id", vehiculo.Id);
             cmd.CommandType = CommandType.StoredProcedure;
             int resul = cmd.ExecuteNonQuery();
