@@ -75,7 +75,19 @@ namespace Capza_Datos
             return resul; 
         }
 
+        public DataTable MostrarVehiculoElim()
+        {
+            coneccion.Open();
+            SqlCommand cmd = new SqlCommand("P_ListaElim", coneccion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter d = new SqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            d.Fill(table);
+            coneccion.Close();
+            return table;
 
+
+        }
 
     }
 }

@@ -13,7 +13,7 @@ namespace Capa_Negocio
     {
         //Intancia de la clase coneccion
         ConeccionBd conecObj = new ConeccionBd();
-
+        
         //Metodo para cargar los datos en el datagrid
         public DataTable CargarDato()
         {
@@ -37,7 +37,11 @@ namespace Capa_Negocio
             return conecObj.ElimarVehiculo(vehiculoObj);
         }
 
-
+        public DataTable VehiculosElim()
+        {
+            return conecObj.MostrarVehiculoElim();
+            
+        }
 
 
 
