@@ -11,12 +11,14 @@ namespace Capza_Datos
         private SqlConnection coneccion = new SqlConnection(ConfigurationManager.ConnectionStrings["sql"].ConnectionString);
 
         //Metodo para cargar todos los vehiculos de la basse de datos
-        public DataTable CargarVehiculos()
+        public DataTable CargarVehiculos(int numSaltar, int numRegist)
         {
             coneccion.Open();
             string queryCargar = "P_cargarVehiculos";
             SqlCommand cmd = new SqlCommand(queryCargar, coneccion);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@NumSaltar",numSaltar);
+            cmd.Parameters.AddWithValue("@NumRegist",numRegist);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable tablaVehiculos = new DataTable();
             da.Fill(tablaVehiculos);
@@ -89,5 +91,6 @@ namespace Capza_Datos
 
         }
 
+     
     }
 }

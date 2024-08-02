@@ -52,6 +52,8 @@
             this.dgv_RegistrosVehiuculos = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnAtras = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_RegistrosVehiuculos)).BeginInit();
@@ -59,6 +61,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnModificar);
             this.groupBox1.Controls.Add(this.btnAgregar);
@@ -255,7 +258,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(-1, 211);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(858, 209);
+            this.groupBox2.Size = new System.Drawing.Size(858, 183);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Vehiculos Registrados";
@@ -269,7 +272,7 @@
             this.dgv_RegistrosVehiuculos.Name = "dgv_RegistrosVehiuculos";
             this.dgv_RegistrosVehiuculos.ReadOnly = true;
             this.dgv_RegistrosVehiuculos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_RegistrosVehiuculos.Size = new System.Drawing.Size(852, 185);
+            this.dgv_RegistrosVehiuculos.Size = new System.Drawing.Size(852, 159);
             this.dgv_RegistrosVehiuculos.TabIndex = 2;
             this.dgv_RegistrosVehiuculos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RegistrosVehiuculos_CellClick);
             // 
@@ -287,13 +290,35 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(630, 426);
+            this.button1.Location = new System.Drawing.Point(663, 113);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(224, 40);
+            this.button1.Size = new System.Drawing.Size(153, 40);
             this.button1.TabIndex = 19;
             this.button1.Text = "Registros eliminados";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtras.Location = new System.Drawing.Point(316, 397);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(75, 40);
+            this.btnAtras.TabIndex = 21;
+            this.btnAtras.Text = "<";
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSiguiente.Location = new System.Drawing.Point(462, 397);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 40);
+            this.btnSiguiente.TabIndex = 22;
+            this.btnSiguiente.Text = ">";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // ConcesionarioVehiculo
             // 
@@ -301,7 +326,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(861, 512);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSiguiente);
+            this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -343,6 +369,8 @@
         private System.Windows.Forms.DataGridView dgv_RegistrosVehiuculos;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAtras;
+        private System.Windows.Forms.Button btnSiguiente;
     }
 }
 

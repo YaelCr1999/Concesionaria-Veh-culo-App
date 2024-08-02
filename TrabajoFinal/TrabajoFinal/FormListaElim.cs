@@ -34,5 +34,10 @@ namespace TrabajoFinal
                 MessageBox.Show("Selecciona un Registro valido");
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

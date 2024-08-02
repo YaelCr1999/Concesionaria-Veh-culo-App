@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -10,9 +11,12 @@ namespace TrabajoFinal
 {
     public partial class ConcesionarioVehiculo : Form
     {
+        int paginaSaltar = 1;
+        int paginaSiguiente = 5; 
         public ConcesionarioVehiculo()
         {
             InitializeComponent();
+            CargarDato();
         }
 
         //Evento que se utiliza para poder cargar los datos en el DateGridView al cargar el formulario
@@ -25,7 +29,7 @@ namespace TrabajoFinal
         private void CargarRegistros()
         {
             clasNegocio CargarDatos = new clasNegocio();
-            dgv_RegistrosVehiuculos.DataSource = CargarDatos.CargarDato();
+            dgv_RegistrosVehiuculos.DataSource = CargarDatos.CargarDato(paginaSaltar,paginaSiguiente);
         }
          
         //Este evento se utliza para agregar un nuevo Vehiculo a la base de datos
@@ -175,6 +179,29 @@ namespace TrabajoFinal
         {
             FormListaElim listNew = new FormListaElim();
             listNew.ShowDialog();
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+
+            paginaSaltar++;
+            CargarDato();
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            if (paginaSaltar > 1)
+            {
+                paginaSaltar--;
+                CargarDato();
+            }
+        }
+
+        private void CargarDato()
+        {
+            clasNegocio ne = new clasNegocio();
+            DataTable dt = ne.CargarDato(paginaSaltar, paginaSiguiente);
+            dgv_RegistrosVehiuculos.DataSource = dt;
         }
     }
 }
