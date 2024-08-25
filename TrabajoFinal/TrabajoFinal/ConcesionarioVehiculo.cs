@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -12,11 +13,12 @@ namespace TrabajoFinal
     public partial class ConcesionarioVehiculo : Form
     {
         int paginaSaltar = 1;
-        int paginaSiguiente = 5; 
+        int paginaSiguiente = 5;
+
         public ConcesionarioVehiculo()
         {
             InitializeComponent();
-            CargarDato();
+            SeleccionarItem(paginaSaltar,paginaSiguiente);
         }
 
         //Evento que se utiliza para poder cargar los datos en el DateGridView al cargar el formulario
@@ -185,7 +187,7 @@ namespace TrabajoFinal
         {
 
             paginaSaltar++;
-            CargarDato();
+            SeleccionarItem(paginaSaltar,paginaSiguiente);
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -193,11 +195,41 @@ namespace TrabajoFinal
             if (paginaSaltar > 1)
             {
                 paginaSaltar--;
-                CargarDato();
+                SeleccionarItem(paginaSaltar, paginaSiguiente);
             }
         }
 
-        private void CargarDato()
+        //private void CargarDato()
+        ////{
+        //    clasNegocio ne = new clasNegocio();
+        //    DataTable dt = ne.CargarDato(paginaSaltar, paginaSiguiente);
+        //    dgv_RegistrosVehiuculos.DataSource = dt;
+        //}
+
+        private void cmbCantPagina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int numPagina = int.Parse(cmbCantPagina.Text);
+
+            if (numPagina == 5)
+            {
+                SeleccionarItem(paginaSaltar, 5);
+            }
+
+            if (numPagina == 10)
+            {
+                SeleccionarItem(paginaSaltar, 10);
+            }
+            if (numPagina == 15)
+            {
+                SeleccionarItem(paginaSaltar, 15);
+            }
+            if (numPagina == 20)
+            {
+                SeleccionarItem(paginaSaltar, 20);
+            }
+
+        }
+        private void SeleccionarItem(int paginaSaltar, int paginaSiguiente)
         {
             clasNegocio ne = new clasNegocio();
             DataTable dt = ne.CargarDato(paginaSaltar, paginaSiguiente);

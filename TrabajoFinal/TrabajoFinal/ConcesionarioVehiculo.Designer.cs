@@ -54,6 +54,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnAtras = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
+            this.cmbCantPagina = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_RegistrosVehiuculos)).BeginInit();
@@ -301,9 +302,9 @@
             // btnAtras
             // 
             this.btnAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtras.Location = new System.Drawing.Point(316, 397);
+            this.btnAtras.Location = new System.Drawing.Point(345, 410);
             this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(75, 40);
+            this.btnAtras.Size = new System.Drawing.Size(75, 27);
             this.btnAtras.TabIndex = 21;
             this.btnAtras.Text = "<";
             this.btnAtras.UseVisualStyleBackColor = true;
@@ -312,13 +313,27 @@
             // btnSiguiente
             // 
             this.btnSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSiguiente.Location = new System.Drawing.Point(462, 397);
+            this.btnSiguiente.Location = new System.Drawing.Point(463, 410);
             this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(75, 40);
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 27);
             this.btnSiguiente.TabIndex = 22;
             this.btnSiguiente.Text = ">";
             this.btnSiguiente.UseVisualStyleBackColor = true;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // cmbCantPagina
+            // 
+            this.cmbCantPagina.FormattingEnabled = true;
+            this.cmbCantPagina.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15",
+            "20"});
+            this.cmbCantPagina.Location = new System.Drawing.Point(237, 410);
+            this.cmbCantPagina.Name = "cmbCantPagina";
+            this.cmbCantPagina.Size = new System.Drawing.Size(80, 21);
+            this.cmbCantPagina.TabIndex = 23;
+            this.cmbCantPagina.SelectedIndexChanged += new System.EventHandler(this.cmbCantPagina_SelectedIndexChanged);
             // 
             // ConcesionarioVehiculo
             // 
@@ -326,6 +341,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(861, 512);
+            this.Controls.Add(this.cmbCantPagina);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label9);
@@ -371,6 +387,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.ComboBox cmbCantPagina;
     }
 }
 
