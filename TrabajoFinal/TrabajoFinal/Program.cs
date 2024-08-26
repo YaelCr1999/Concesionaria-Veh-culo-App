@@ -16,7 +16,7 @@ namespace TrabajoFinal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ConcesionarioVehiculo());
+            Application.Run(new Login());
         }
     }
 }

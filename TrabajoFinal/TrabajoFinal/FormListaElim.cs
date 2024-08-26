@@ -34,5 +34,7 @@ namespace TrabajoFinal
                 MessageBox.Show("Selecciona un Registro valido");
             }
         }
+
+      
     }
 }

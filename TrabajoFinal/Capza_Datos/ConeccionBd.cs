@@ -11,12 +11,14 @@ namespace Capza_Datos
         private SqlConnection coneccion = new SqlConnection(ConfigurationManager.ConnectionStrings["sql"].ConnectionString);
 
         //Metodo para cargar todos los vehiculos de la basse de datos
-        public DataTable CargarVehiculos()
+        public DataTable CargarVehiculos(int numSaltar, int numRegist)
         {
             coneccion.Open();
             string queryCargar = "P_cargarVehiculos";
             SqlCommand cmd = new SqlCommand(queryCargar, coneccion);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@NumSaltar",numSaltar);
+            cmd.Parameters.AddWithValue("@NumRegist",numRegist);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable tablaVehiculos = new DataTable();
             da.Fill(tablaVehiculos);
@@ -87,6 +89,24 @@ namespace Capza_Datos
             return table;
 
 
+        }
+        public bool Login(Usuarios usuario)
+        {
+            coneccion.Open();
+
+            // Usamos un procedimiento almacenado llamado Pr_login para verificar el usuario
+            SqlCommand cmd = new SqlCommand("Pr_login", coneccion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // Añadir parámetros
+            cmd.Parameters.AddWithValue("@nombreUsuario", usuario.NombreUsuario);
+            cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
+
+            // Asumimos que el procedimiento almacenado devuelve el ID del usuario si es válido, o 0 si no lo es
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+
+            coneccion.Close();
+            return resultado > 0;
         }
 
     }

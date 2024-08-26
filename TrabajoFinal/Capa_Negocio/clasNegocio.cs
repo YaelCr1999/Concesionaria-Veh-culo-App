@@ -15,9 +15,9 @@ namespace Capa_Negocio
         ConeccionBd conecObj = new ConeccionBd();
         
         //Metodo para cargar los datos en el datagrid
-        public DataTable CargarDato()
+        public DataTable CargarDato(int numSaltar,int numRegist)
         {
-            return conecObj.CargarVehiculos();
+            return conecObj.CargarVehiculos(numSaltar,numRegist);
         }
 
         //Metodo para poder agregar un nuevo vehiculo a la base de datos
@@ -43,7 +43,11 @@ namespace Capa_Negocio
             
         }
 
+        public bool login(Usuarios usuario)
+        {
+            return conecObj.Login(usuario);
+        }
 
-
+       
     }
 }
