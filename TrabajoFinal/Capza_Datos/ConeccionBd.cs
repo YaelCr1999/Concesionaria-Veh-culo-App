@@ -90,7 +90,24 @@ namespace Capza_Datos
 
 
         }
+        public bool Login(Usuarios usuario)
+        {
+            coneccion.Open();
 
-     
+            // Usamos un procedimiento almacenado llamado Pr_login para verificar el usuario
+            SqlCommand cmd = new SqlCommand("Pr_login", coneccion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // Añadir parámetros
+            cmd.Parameters.AddWithValue("@nombreUsuario", usuario.NombreUsuario);
+            cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
+
+            // Asumimos que el procedimiento almacenado devuelve el ID del usuario si es válido, o 0 si no lo es
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+
+            coneccion.Close();
+            return resultado > 0;
+        }
+
     }
 }

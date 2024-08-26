@@ -43,6 +43,11 @@ namespace Capa_Negocio
             
         }
 
+        public bool login(Usuarios usuario)
+        {
+            return conecObj.Login(usuario);
+        }
+
        
     }
 }
