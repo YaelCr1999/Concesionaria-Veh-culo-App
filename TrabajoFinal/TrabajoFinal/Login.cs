@@ -12,9 +12,7 @@ namespace TrabajoFinal
         public Login()
         {
             InitializeComponent();
-
             
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
