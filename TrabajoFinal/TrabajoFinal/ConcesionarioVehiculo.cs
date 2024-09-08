@@ -45,7 +45,7 @@ namespace TrabajoFinal
             string placa = txtPlaca.Text;
             string precio = txtPrecio.Text;
 
-            if (marca == "" || modelo == ""|| color == "" || ano == ""|| matricula == "" ||placa == "" || precio == "" )
+            if (string.IsNullOrEmpty(marca) ||string.IsNullOrEmpty(modelo)||string.IsNullOrEmpty(color) || string.IsNullOrEmpty(ano) || string.IsNullOrEmpty(matricula) ||string.IsNullOrEmpty(placa) || string.IsNullOrEmpty(precio) )
             {
                 MessageBox.Show("Debes llenar todos los campos ","Informe" ,MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
 
@@ -108,7 +108,7 @@ namespace TrabajoFinal
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (txtId.Text == "" || txtMarca.Text == "" || txtModelo.Text == "" || txtColor.Text == "" || txtAno.Text == "" || txtMatricula.Text == "" || txtPlaca.Text == "" || txtPrecio.Text == "")
+            if (string.IsNullOrEmpty(txtId.Text) ||string.IsNullOrEmpty(txtMarca.Text) || string.IsNullOrEmpty(txtModelo.Text) || string.IsNullOrEmpty(txtColor.Text) || string.IsNullOrEmpty(txtAno.Text) || string.IsNullOrEmpty(txtMatricula.Text) || string.IsNullOrEmpty(txtPlaca.Text) || string.IsNullOrEmpty(txtPrecio.Text))
             {
                 MessageBox.Show("Debe haber seleccionado un registro para modificar", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -150,7 +150,7 @@ namespace TrabajoFinal
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
-            if (txtId.Text == "" || txtMarca.Text == "" || txtModelo.Text == "" || txtColor.Text == "" || txtAno.Text == "" || txtMatricula.Text == "" || txtPlaca.Text == "" || txtPrecio.Text == "")
+            if (string.IsNullOrEmpty(txtId.Text) || string.IsNullOrEmpty(txtMarca.Text) || string.IsNullOrEmpty(txtModelo.Text) || string.IsNullOrEmpty(txtColor.Text) || string.IsNullOrEmpty(txtAno.Text) || string.IsNullOrEmpty(txtMatricula.Text) || string.IsNullOrEmpty(txtPlaca.Text) || string.IsNullOrEmpty(txtPrecio.Text))
             {
                 MessageBox.Show("Debe haber seleccionado un registro para eliminar","Informe",MessageBoxButtons.OK,MessageBoxIcon.Information);
 

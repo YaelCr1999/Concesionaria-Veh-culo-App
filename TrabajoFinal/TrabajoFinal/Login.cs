@@ -27,16 +27,16 @@ namespace TrabajoFinal
         private void validacionCampos(Usuarios usuario)
         {
             
-            if (usuario.NombreUsuario == "" && usuario.Contraseña == "")
+            if (string.IsNullOrEmpty(usuario.NombreUsuario) && string.IsNullOrEmpty(usuario.Contraseña))
             {
                 MessageBox.Show("Tienes que ingresar nombre de usuario y contraseña");
             }
-            else if (usuario.NombreUsuario == "")
+            else if (string.IsNullOrEmpty(usuario.NombreUsuario))
             {
                 MessageBox.Show("Tienes que ingresar un nombre usuario");
 
             }
-            else if (usuario.Contraseña == "")
+            else if (string.IsNullOrEmpty(usuario.Contraseña))
             {
                 MessageBox.Show("Tienes que ingresar una contraseña");
             }
